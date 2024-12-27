@@ -10,11 +10,15 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         noOfFruits: state.noOfFruits - 1
-      }
+      };
+    default:
+      return state;
   }
 }
 
 const store = createStore(reducer);
+
+console.log(store.getState());
 
 state.dispatch({
   type: 'BUY_FRUIT',
