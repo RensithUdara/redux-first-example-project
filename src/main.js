@@ -37,20 +37,29 @@ store.subscribe(() => {
 // });
 const BUY_FRUIT = 'BUY_FRUIT';
 
-function buyFruit() {
+function buyFruit(fruitName) {
   return {
     type: BUY_FRUIT,
-    payload: "Extra Information"
+    payload: "Extra Information" + fruitName
   }
 }
 
-state.dispatch(buyFruit());
+state.dispatch(buyFruit("Apple"));
 
 // console.log(store.getState());
 
-state.dispatch({
-  type: 'ADD_FRUIT',
-  payload: "Extra Information"
-});
+// state.dispatch({
+//   type: 'ADD_FRUIT',
+//   payload: "Extra Information"
+// });
+const ADD_FRUIT = 'ADD_FRUIT';
+
+function buyFruit(fruitName) {
+  return {
+    type: BUY_FRUIT,
+    payload: "Extra Information" + fruitName
+  }
+}
+state.dispatch("Orange");
 
 // console.log(store.getState());
