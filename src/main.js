@@ -1,6 +1,5 @@
 import { createStore } from 'redux'
 
-const BUY_FRUIT = 'BUY_FRUIT';
 
 const initialState = {
   noOfFruits: 5
@@ -32,10 +31,20 @@ store.subscribe(() => {
   console.log("State Changed", store.getState());
 });
 
-state.dispatch({
-  type: BUY_FRUIT,
-  payload: "Extra Information"
-});
+// state.dispatch({
+//   type: "BUY_FRUIT",
+//   payload: "Extra Information"
+// });
+const BUY_FRUIT = 'BUY_FRUIT';
+
+function buyFruit() {
+  return {
+    type: BUY_FRUIT,
+    payload: "Extra Information"
+  }
+}
+
+state.dispatch(buyFruit());
 
 // console.log(store.getState());
 
