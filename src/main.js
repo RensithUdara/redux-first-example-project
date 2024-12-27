@@ -11,6 +11,12 @@ function reducer(state = initialState, action) {
         ...state,
         noOfFruits: state.noOfFruits - 1
       };
+
+    case 'ADD_FRUIT':
+      return {
+        ...state,
+        noOfFruits: state.noOfFruits + 1
+      };
     default:
       return state;
   }
@@ -18,9 +24,22 @@ function reducer(state = initialState, action) {
 
 const store = createStore(reducer);
 
-console.log(store.getState());
+// console.log(store.getState());
+
+store.subscribe(() => {
+  console.log("State Changed", store.getState());
+});
 
 state.dispatch({
   type: 'BUY_FRUIT',
   payload: "Extra Information"
 });
+
+// console.log(store.getState());
+
+state.dispatch({
+  type: 'ADD_FRUIT',
+  payload: "Extra Information"
+});
+
+// console.log(store.getState());
