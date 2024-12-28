@@ -65,32 +65,36 @@
 // // console.log(store.getState());
 
 
-import { combineReducers, createStore , applyMiddleware } from 'redux';
+import { combineReducers, createStore, applyMiddleware } from 'redux';
 import fruitReducer from './redux/fruitSection/fruitReducer';
 import pharmacyReducer from './redux/pharmacySection/pharmacyReducer';
 import { buyFruit } from './redux/fruitSection/fruitAction';
 import { buyPHARMACY_ITEM } from './redux/pharmacySection/pharmacyAction';
 import logger from 'redux-logger';
+import thunk from 'redux-thunk';
+import todoReducer from './redux/todo/todoReducer';
 
 const rootReducer = combineReducers({
     fruit: fruitReducer,
     pharmacy: pharmacyReducer,
-
+    todo: todoReducer
 })
 
-const store = createStore(rootReducer, applyMiddleware(logger));
+const store = createStore(rootReducer, applyMiddleware(logger, thunk));
 
-const unsubscribe = store.subscribe(() => {
-    console.log("State Changed", store.getState());
-});  
+// const unsubscribe = store.subscribe(() => {
+//     console.log("State Changed", store.getState());
+// });
 
-function thunkfunction(dispatch, getState) {
-    //console.log("Thunk Function", dispatch, getState);
-}
+// function thunkfunction(dispatch, getState) {
+//     //console.log("Thunk Function", dispatch, getState);
+// }
 
 store.dispatch(buyFruit("Apple"));
 store.dispatch(buyPHARMACY_ITEM("Pharmacy Item 1"));
 
-store.dispatch(thunkfunction);
+// store.dispatch(thunkfunction);
 
-unsubscribe();
+//unsubscribe();
+
+store.dispatch(fetchTodos());
