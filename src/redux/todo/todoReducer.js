@@ -11,7 +11,7 @@ const initialState = {
       case FETCH_TODOS_LOADING:
         return {
           ...state,
-         loading: true
+         loading: action.payload,
         };
   
       case FETCH_TODOS_SUCCESS:
