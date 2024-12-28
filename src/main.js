@@ -60,6 +60,6 @@ function buyFruit(fruitName) {
     payload: "Extra Information" + fruitName
   }
 }
-state.dispatch("Orange");
+state.dispatch(addFruit("Orange"));
 
 // console.log(store.getState());
