@@ -1,65 +1,78 @@
-import { createStore } from 'redux'
+// import { createStore } from 'redux'
 
 
-const initialState = {
-  noOfFruits: 5
-}
+// const initialState = {
+//   noOfFruits: 5
+// }
 
-function reducer(state = initialState, action) {
-  switch (action.type) {
-    case 'BUY_FRUIT':
-      return {
-        ...state,
-        noOfFruits: state.noOfFruits - 1
-      };
+// function reducer(state = initialState, action) {
+//   switch (action.type) {
+//     case 'BUY_FRUIT':
+//       return {
+//         ...state,
+//         noOfFruits: state.noOfFruits - 1
+//       };
 
-    case 'ADD_FRUIT':
-      return {
-        ...state,
-        noOfFruits: state.noOfFruits + 1
-      };
-    default:
-      return state;
-  }
-}
+//     case 'ADD_FRUIT':
+//       return {
+//         ...state,
+//         noOfFruits: state.noOfFruits + 1
+//       };
+//     default:
+//       return state;
+//   }
+// }
 
-const store = createStore(reducer);
+// const store = createStore(reducer);
 
-// console.log(store.getState());
+// // console.log(store.getState());
 
-store.subscribe(() => {
-  console.log("State Changed", store.getState());
-});
-
-// state.dispatch({
-//   type: "BUY_FRUIT",
-//   payload: "Extra Information"
+// store.subscribe(() => {
+//   console.log("State Changed", store.getState());
 // });
-const BUY_FRUIT = 'BUY_FRUIT';
 
-function buyFruit(fruitName) {
-  return {
-    type: BUY_FRUIT,
-    payload: "Extra Information" + fruitName
-  }
-}
+// // state.dispatch({
+// //   type: "BUY_FRUIT",
+// //   payload: "Extra Information"
+// // });
+// const BUY_FRUIT = 'BUY_FRUIT';
 
-state.dispatch(buyFruit("Apple"));
+// function buyFruit(fruitName) {
+//   return {
+//     type: BUY_FRUIT,
+//     payload: "Extra Information" + fruitName
+//   }
+// }
 
-// console.log(store.getState());
+// state.dispatch(buyFruit("Apple"));
 
-// state.dispatch({
-//   type: 'ADD_FRUIT',
-//   payload: "Extra Information"
-// });
-const ADD_FRUIT = 'ADD_FRUIT';
+// // console.log(store.getState());
 
-function buyFruit(fruitName) {
-  return {
-    type: BUY_FRUIT,
-    payload: "Extra Information" + fruitName
-  }
-}
-state.dispatch(addFruit("Orange"));
+// // state.dispatch({
+// //   type: 'ADD_FRUIT',
+// //   payload: "Extra Information"
+// // });
+// const ADD_FRUIT = 'ADD_FRUIT';
 
-// console.log(store.getState());
+// function buyFruit(fruitName) {
+//   return {
+//     type: BUY_FRUIT,
+//     payload: "Extra Information" + fruitName
+//   }
+// }
+// state.dispatch(addFruit("Orange"));
+
+// // console.log(store.getState());
+
+
+import { combineReducers, createStore } from 'redux';
+import fruitReducer from './redux/fruitSection/fruitReducer';
+import pharmacyReducer from './redux/pharmacySection/pharmacyReducer';
+
+const rootReducer = combineReducers({
+    fruit: fruitReducer,
+    pharmacy: pharmacyReducer,
+
+})
+
+const store = createStore(rootReducer);

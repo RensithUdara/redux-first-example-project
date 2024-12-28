@@ -1,16 +1,18 @@
+import { ADD_FRUIT, BUY_FRUIT } from "./fruitAction";
+
 const initialState = {
     noOfFruits: 5
   }
   
   function reducer(state = initialState, action) {
     switch (action.type) {
-      case 'BUY_FRUIT':
+      case BUY_FRUIT:
         return {
           ...state,
           noOfFruits: state.noOfFruits - 1
         };
   
-      case 'ADD_FRUIT':
+      case ADD_FRUIT:
         return {
           ...state,
           noOfFruits: state.noOfFruits + 1
@@ -19,3 +21,5 @@ const initialState = {
         return state;
     }
   }
+
+  export default reducer;
