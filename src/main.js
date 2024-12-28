@@ -68,6 +68,8 @@
 import { combineReducers, createStore } from 'redux';
 import fruitReducer from './redux/fruitSection/fruitReducer';
 import pharmacyReducer from './redux/pharmacySection/pharmacyReducer';
+import { buyFruit } from './redux/fruitSection/fruitAction';
+import { buyPHARMACY_ITEM } from './redux/pharmacySection/pharmacyAction';
 
 const rootReducer = combineReducers({
     fruit: fruitReducer,
@@ -76,3 +78,13 @@ const rootReducer = combineReducers({
 })
 
 const store = createStore(rootReducer);
+
+const unsubscribe = store.subscribe(() => {
+    console.log("State Changed", store.getState());
+});  
+
+
+store.dispatch(buyFruit("Apple"));
+store.dispatch(buyPHARMACY_ITEM("Pharmacy Item 1"));
+
+unsubscribe();
