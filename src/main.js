@@ -65,11 +65,12 @@
 // // console.log(store.getState());
 
 
-import { combineReducers, createStore } from 'redux';
+import { combineReducers, createStore , applyMiddleware } from 'redux';
 import fruitReducer from './redux/fruitSection/fruitReducer';
 import pharmacyReducer from './redux/pharmacySection/pharmacyReducer';
 import { buyFruit } from './redux/fruitSection/fruitAction';
 import { buyPHARMACY_ITEM } from './redux/pharmacySection/pharmacyAction';
+import logger from 'redux-logger';
 
 const rootReducer = combineReducers({
     fruit: fruitReducer,
@@ -77,7 +78,7 @@ const rootReducer = combineReducers({
 
 })
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, applyMiddleware(logger));
 
 const unsubscribe = store.subscribe(() => {
     console.log("State Changed", store.getState());
