@@ -84,8 +84,13 @@ const unsubscribe = store.subscribe(() => {
     console.log("State Changed", store.getState());
 });  
 
+function thunkfunction(dispatch, getState) {
+    //console.log("Thunk Function", dispatch, getState);
+}
 
 store.dispatch(buyFruit("Apple"));
 store.dispatch(buyPHARMACY_ITEM("Pharmacy Item 1"));
+
+store.dispatch(thunkfunction);
 
 unsubscribe();
