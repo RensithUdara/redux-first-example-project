@@ -19,11 +19,11 @@ function reducer(state = initialState, action) {
                 noOfFruits: state.noOfPharmacyItems + 1
             };
 
-        case 'BUY_FRUIT':
-            return {
-                ...state,
-                noOfFruits: state.noOfPharmacyItems - 1
-            };
+        // case 'BUY_FRUIT':
+        //     return {
+        //         ...state,
+        //         noOfFruits: state.noOfPharmacyItems - 1
+        //     };
 
         default:
             return state;
