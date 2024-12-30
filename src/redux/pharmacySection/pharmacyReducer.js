@@ -1,3 +1,4 @@
+import { BUY_FRUIT } from "../fruitsSection/fruitsAction";
 import { ADD_PHARMACY_ITEM, BUY_PHARMACY_ITEM } from "./pharmacyAction";
 
 const initialState = {
@@ -17,6 +18,13 @@ function reducer(state = initialState, action) {
                 ...state,
                 noOfFruits: state.noOfPharmacyItems + 1
             };
+
+        case 'BUY_FRUIT':
+            return {
+                ...state,
+                noOfFruits: state.noOfPharmacyItems - 1
+            };
+
         default:
             return state;
     }
